@@ -1,0 +1,709 @@
+http://t.iyun720.com
+gwmc42@163.com  Dd112211
+【Apple ID】Belljlo1@icloud.com【密码】Dd112211
+
+*登录验证
+*搜索用户
+*搜索作品
+*获取我的信息
+*获取特定ID用户信息
+*获取我的作品(按时间排序)
+*获取特定ID用户的作品(按时间排序)
+*获取我收藏的作品
+*获取关注的用户的作品(按时间排序)
+*获取我所关注的用户们的信息
+*获取关注我的用户们的信息
+*获取我和指定ID用户之间的关系
+*设置我和指定ID用户之间的关系
+*获取指定ID作品的评论
+*创建指定ID作品的评论
+*删除指定ID的评论
+*获取指定ID的作品
+*设置或取消收藏指定ID的作品
+
+1,登录验证
+GET Parameters:
+	action = 1
+	username = (String)
+	passwd = (String)
+RETURN:
+	//Right
+	{	"return_code": 1001,
+		"access_token": ["7e727306a79cd6cb508e5d3794d6bb06bef33162"]
+	}
+	//Wrong Passwd
+	{"return_code": 1003}
+	//Wrong UserName
+	{"return_code": 1002}
+
+2,搜索用户
+GET Parameters:
+	action = 2
+	access_token = (String)
+	key_word＝ (String)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"users":[
+			{	"uid":3,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"sex":1, //1 for man, 2 for woman
+				"province":"广东",
+				"city":"深圳",
+				"summary":"大家好，我是jiangzhouq，很高兴认识大家。",
+				"follow":123,
+				"followed":412,
+				"works":100,
+				"popular":1222
+			},
+			{	"uid":3,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"sex":1, //1 for man, 2 for woman
+				"province":"广东",
+				"city":"深圳",
+				"summary":"大家好，我是jiangzhouq，很高兴认识大家。",
+				"follow":123,
+				"followed":412,
+				"works":100,
+				"popular":1222
+			},
+			{	"uid":3,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"sex":1, //1 for man, 2 for woman
+				"province":"广东",
+				"city":"深圳",
+				"summary":"大家好，我是jiangzhouq，很高兴认识大家。",
+				"follow":123,
+				"followed":412,
+				"works":100,
+				"popular":1222
+			}
+		]
+	}
+
+3,搜索作品
+GET Parameters:
+	action = 3
+	access_token = (String)
+	key_word＝ (String)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"medias":[
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			},
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			},
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			}
+		]
+	}
+4,获取我的信息
+GET Parameters:
+	action = 4
+	access_token = (String)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"users":[
+			{	"uid":3,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"sex":1, //1 for man, 2 for woman
+				"province":"广东",
+				"city":"深圳",
+				"summary":"大家好，我是jiangzhouq，很高兴认识大家。",
+				"follow":123,
+				"followed":412,
+				"works":100,
+				"popular":1222
+			}
+		]
+	}
+
+5,获取特定ID用户信息
+GET Parameters:
+	action = 5
+	access_token = (String)
+	uid = (int)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"users":[
+			{	"uid":3,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"sex":1, //1 for man, 2 for woman
+				"province":"广东",
+				"city":"深圳",
+				"summary":"大家好，我是jiangzhouq，很高兴认识大家。",
+				"follow":123,
+				"followed":412,
+				"works":100,
+				"popular":1222
+			}
+		]
+	}
+
+6,获取我的作品(按时间排序)
+GET Parameters:
+	action = 6
+	access_token = (String)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"medias":[
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			},
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			},
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			}
+		]
+	}
+
+7,获取特定ID用户的作品(按时间排序)
+GET Parameters:
+	action = 7
+	access_token = (String)
+	uid ＝ (int)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"medias":[
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			},
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			},
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			}
+		]
+	}
+
+8,获取我收藏的作品
+GET Parameters:
+	action = 8
+	access_token = (String)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"medias":[
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			},
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			},
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			}
+		]
+	}
+
+9,获取关注的用户的作品(按时间排序)
+GET Parameters:
+	action = 9
+	access_token = (String)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"medias":[
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			},
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			},
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			}
+		]
+	}
+
+10,获取我所关注的用户们的信息
+GET Parameters:
+	action = 10
+	access_token = (String)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"users":[
+			{	"uid":3,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"sex":1, //1 for man, 2 for woman
+				"province":"广东",
+				"city":"深圳",
+				"summary":"大家好，我是jiangzhouq，很高兴认识大家。",
+				"follow":123,
+				"followed":412,
+				"works":100,
+				"popular":1222
+			},
+			{	"uid":3,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"sex":1, //1 for man, 2 for woman
+				"province":"广东",
+				"city":"深圳",
+				"summary":"大家好，我是jiangzhouq，很高兴认识大家。",
+				"follow":123,
+				"followed":412,
+				"works":100,
+				"popular":1222
+			},
+			{	"uid":3,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"sex":1, //1 for man, 2 for woman
+				"province":"广东",
+				"city":"深圳",
+				"summary":"大家好，我是jiangzhouq，很高兴认识大家。",
+				"follow":123,
+				"followed":412,
+				"works":100,
+				"popular":1222
+			}
+		]
+	}
+11,获取关注我的用户们的信息
+GET Parameters:
+	action = 11
+	access_token = (String)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"users":[
+			{	"uid":3,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"sex":1, //1 for man, 2 for woman
+				"province":"广东",
+				"city":"深圳",
+				"summary":"大家好，我是jiangzhouq，很高兴认识大家。",
+				"follow":123,
+				"followed":412,
+				"works":100,
+				"popular":1222
+			},
+			{	"uid":3,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"sex":1, //1 for man, 2 for woman
+				"province":"广东",
+				"city":"深圳",
+				"summary":"大家好，我是jiangzhouq，很高兴认识大家。",
+				"follow":123,
+				"followed":412,
+				"works":100,
+				"popular":1222
+			},
+			{	"uid":3,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"sex":1, //1 for man, 2 for woman
+				"province":"广东",
+				"city":"深圳",
+				"summary":"大家好，我是jiangzhouq，很高兴认识大家。",
+				"follow":123,
+				"followed":412,
+				"works":100,
+				"popular":1222
+			}
+		]
+	}
+12,获取我和指定ID用户之间的关系
+GET Parameters:
+	action = 12
+	access_token = (String)
+	uid = (int)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"relationship":1 //1 for 关注 , 2 for 未关注
+	}
+
+13,设置我和指定ID用户之间的关系
+POST Parameters:
+	action = 13
+	access_token = (String)
+	uid = (int)
+	relationship = (int)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"relationship":1 //1 for 关注 , 2 for 未关注
+	}
+
+14,获取指定ID作品的评论
+GET Parameters:
+	action = 14
+	access_token = (String)
+	mid = (int)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"comments":[
+			{	"cid":3,
+				"uid":31,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"content":"不错啊",
+				"create_time":1447912798
+			},
+			{	"cid":3,
+				"uid":31,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"content":"不错啊",
+				"create_time":1447912798
+			},
+			{	"cid":3,
+				"uid":31,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"content":"不错啊",
+				"create_time":1447912798
+			}
+		]
+	}
+15,创建指定ID作品的评论
+16,删除指定ID的评论
+17,获取指定ID的作品
+GET Parameters:
+	action = 17
+	access_token = (String)
+	mid = (int)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"medias":[
+			{	"mid":3,
+				"title":"世界之窗景色",
+				"summary":"这里是世界之窗",
+				"comment":4123,
+				"favorite":412,
+				"is_my_favorite":0,
+				"uid":12421,
+				"user_name":"jiangzhouq",
+				"user_profile":"http://t.iyun720.com/data/images/123124123.png",
+				"create_time":1447912798,
+				"thumbnail":"http://t.iyun720.com/data/images/123124123.png",
+				"low_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"standard_resolution":"http://t.iyun720.com/data/images/123124123.png",
+				"type":1, //1 for pic , 2 for mv
+				"tag":"世界之窗",
+				"province":"广东",
+				"city":"深圳",
+				"popular":4123124
+			}
+		]
+	}
+18,设置或取消收藏指定ID的作品
+POST Parameters:
+	action = 18
+	access_token = (String)
+	mid = (int)
+	is_my_favorite = (int)
+RETURN:
+	//Something Wrong
+	{"return_code": 1000}
+	//Right
+	{
+		"return_code":1001,
+		"is_my_favorite":1
+	}
