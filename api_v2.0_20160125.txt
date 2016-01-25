@@ -8,18 +8,18 @@
 （等和web工程师对接后可用）
 *密码找回 ACTION=4
 （等和web工程师对接后可用）
-*搜索用户 ACTION=21
+*搜索用户 ACTION=21  
 （可用）
 *搜索作品 ACTION=22
 （可用）
 *搜索专辑 ACTION=23
-（可用）
+（不可用）
 *搜索标签 ACTION=24
 （可用）
 *获取所有作品 ACTION=19
 （可用）
 *获取所有作者 ACTION=20
-（可用）
+（可用,参数无效，默认按作品数量返回全部用户）
 *获取固定ID作者信息 ACTION=5
 （可用）
 *获取固定ID作者的所有作品 ACTION=7
@@ -45,10 +45,8 @@ RETURN:
 	{	"return_code": 1001,
 		"access_token": ["7e727306a79cd6cb508e5d3794d6bb06bef33162"]
 	}
-	//Wrong Passwd
-	{"return_code": 1003}
-	//Wrong UserName
-	{"return_code": 1002}
+	//Something wrong
+	{"return_code": 1000}
 
 *注册
 GET Parameters:
@@ -244,6 +242,8 @@ RETURN:
 		]
 	}
 
+###order 1 for create_time
+###order 2 for views
 *获取所有的作品
 GET Parameters:
 	action = 19
@@ -309,7 +309,7 @@ RETURN:
 
 *获取所有作者信息
 GET Parameters:
-	action = 200
+	action = 20
 	order = (int)
 	begin = (int)
 	number = (int)

@@ -8,7 +8,9 @@ import threading, time
 import sys
 from werkzeug.wrappers import Request, Response
 from threading import Thread
-import HttpActionProcessor
+import HttpActionProcessor_v2
+import chardet
+
 class KThread(threading.Thread):
     """A subclass of threading.Thread, with a kill()
     method.
@@ -104,50 +106,56 @@ def test_exception():
 
 @Request.application
 def application(request):
+    print 'len args',len(request.args)
     if request.method == 'GET' and len(request.args) >= 1:
         action = request.args.get('action',0)
-        if action == 1:
+        print len(request.args)
+        print action
+        if int(action) == 1:
             if len(request.args) == 1:
-                t = GetUrlThread(int(action))
+                t = GetUrlThread(int(action), '', '', '', '')
                 t.start()
                 t.join()
                 return Response(t.res)
             else:
                 return Response('0')
-        elif action == 2:
+        elif int(action) == 2:
             if len(request.args) == 3:
                 username = request.args.get('username', '')
                 passwd = request.args.get('passwd', '')
-                t = GetUrlThread(int(action), str(username), str(passwd))
+                t = GetUrlThread(int(action), str(username), str(passwd), '', '')
                 t.start()
                 t.join()
                 return Response(t.res)
             else:
                 return Response('0')
-        elif action == 3:
+        elif int(action) == 3:
             if len(request.args) == 4:
                 email = request.args.get('email', '')
                 username = request.args.get('username', '')
                 passwd = request.args.get('passwd', '')
-                t = GetUrlThread(int(action),str(email), str(username), str(passwd))
+                t = GetUrlThread(int(action),str(email), str(username), str(passwd), '')
                 t.start()
                 t.join()
                 return Response(t.res)
             else:
                 return Response('0')
-        elif action == 4:
+        elif int(action) == 4:
             if len(request.args) == 2:
                 email = request.args.get('email', '')
-                t = GetUrlThread(int(action),str(email))
+                t = GetUrlThread(int(action),str(email), '', '', '')
                 t.start()
                 t.join()
                 return Response(t.res)
             else:
                 return Response('0')
-        elif action == 21:
+        elif int(action) == 21:
             if len(request.args) == 5:
                 access_token = request.args.get('access_token', '')
-                key_word = request.args.get('key_word', '')
+                key_word = request.args.get('key_word', '').encode("utf-8")
+                # print 'key_word:',key_word.encode("utf-8")
+                # fencoding=chardet.detect(key_word.encode("utf-8"))
+                # print fencoding
                 begin = request.args.get('begin', 0)
                 number = request.args.get('number', 20)
                 t = GetUrlThread(int(action), str(access_token), str(key_word), int(begin), int(number))
@@ -156,10 +164,10 @@ def application(request):
                 return Response(t.res)
             else:
                 return Response('0')
-        elif action == 22:
+        elif int(action) == 22:
             if len(request.args) == 5:
                 access_token = request.args.get('access_token', '')
-                key_word = request.args.get('key_word', '')
+                key_word = request.args.get('key_word', '').encode("utf-8")
                 begin = request.args.get('begin', 0)
                 number = request.args.get('number', 20)
                 t = GetUrlThread(int(action), str(access_token), str(key_word), int(begin), int(number))
@@ -168,15 +176,17 @@ def application(request):
                 return Response(t.res)
             else:
                 return Response('0')
-        elif action == 23:
+        elif int(action) == 23:
             if len(request.args) == 5:
+                print '=5'
                 return Response('0')
             else:
+                print 'else'
                 return Response('0')
-        elif action == 24:
+        elif int(action) == 24:
             if len(request.args) == 5:
                 access_token = request.args.get('access_token', '')
-                key_word = request.args.get('key_word', '')
+                key_word = request.args.get('key_word', '').encode("utf-8")
                 begin = request.args.get('begin', 0)
                 number = request.args.get('number', 20)
                 t = GetUrlThread(int(action), str(access_token), str(key_word), int(begin), int(number))
@@ -185,52 +195,52 @@ def application(request):
                 return Response(t.res)
             else:
                 return Response('0')
-        elif action == 19:
+        elif int(action) == 19:
             if len(request.args) == 4:
                 order = request.args.get('order', 1)
                 begin = request.args.get('begin', 0)
                 number = request.args.get('number', 20)
-                t = GetUrlThread(int(action), int(order), int(begin), int(number))
+                t = GetUrlThread(int(action), int(order), int(begin), int(number), '')
                 t.start()
                 t.join()
                 return Response(t.res)
             else:
                 return Response('0')
-        elif action == 20:
+        elif int(action) == 20:
             if len(request.args) == 4:
                 order = request.args.get('order', 1)
                 begin = request.args.get('begin', 0)
                 number = request.args.get('number', 20)
-                t = GetUrlThread(int(action), int(order), int(begin), int(number))
+                t = GetUrlThread(int(action), int(order), int(begin), int(number), '')
                 t.start()
                 t.join()
                 return Response(t.res)
             else:
                 return Response('0')
-        elif action == 5:
+        elif int(action) == 5:
             if len(request.args) == 2:
                 uid = request.args.get('uid', -1)
-                t = GetUrlThread(int(action), int(uid))
+                t = GetUrlThread(int(action), int(uid), '', '', '')
                 t.start()
                 t.join()
                 return Response(t.res)
             else:
                 return Response('0')
-        elif action == 7:
+        elif int(action) == 7:
             if len(request.args) == 4:
                 uid = request.args.get('uid', -1)
                 begin = request.args.get('begin', 0)
                 number = request.args.get('number', 20)
-                t = GetUrlThread(int(action), int(uid), int(begin), int(number))
+                t = GetUrlThread(int(action), int(uid), int(begin), int(number), '')
                 t.start()
                 t.join()
                 return Response(t.res)
             else:
                 return Response('0')
-        elif action == 8:
+        elif int(action) == 8:
             if len(request.args) == 2:
                 uid = request.args.get('uid', -1)
-                t = GetUrlThread(int(action), int(uid))
+                t = GetUrlThread(int(action), int(uid), '', '', '')
                 t.start()
                 t.join()
                 return Response(t.res)
@@ -253,85 +263,86 @@ class GetUrlThread(Thread):
         self.begin = 0
         self.number = 20
         self.order = 1
-        if action == 1:
-
-        elif action ==2:
+        if int(self.action) == 1:
+        	self.res = ''
+        elif int(self.action) == 2:
             self.username = arg1
             self.passwd = arg2
-        elif action ==3:
+        elif int(self.action) ==3:
             self.email = arg1
             self.username = arg2
             self.passwd = arg3
-        elif action ==4:
+        elif int(self.action) ==4:
             self.email = arg1
-        elif action ==21:
+        elif int(self.action) ==21:
+            print 'key',arg2
             self.access_token = arg1
             self.key_word = arg2
             self.begin = arg3
             self.number = arg4
-        elif action ==22:
+        elif int(self.action) ==22:
             self.access_token = arg1
             self.key_word = arg2
             self.begin = arg3
             self.number = arg4
-        elif action ==23:
+        elif int(self.action) ==23:
             self.access_token = arg1
             self.key_word = arg2
             self.begin = arg3
             self.number = arg4
-        elif action ==24:
+        elif int(self.action) ==24:
             self.access_token = arg1
             self.key_word = arg2
             self.begin = arg3
             self.number = arg4
-        elif action ==19:
+        elif int(self.action) ==19:
             self.order = arg1
             self.begin = arg2
             self.number = arg3
-        elif action ==20:
+        elif int(self.action) ==20:
             self.order = arg1
             self.begin = arg2
             self.number = arg3
-        elif action ==5:
+        elif int(self.action) ==5:
             self.uid = arg1
-        elif action ==7:
+        elif int(self.action) ==7:
             self.uid = arg1
             self.begin = arg2
             self.number = arg3
-        elif action ==8: 
+        elif int(self.action) ==8: 
             self.uid = arg1
 
         super(GetUrlThread, self).__init__()
     @timeout(20) 
     def run(self):
         print 'hello:',self.action
-        self.res = '400'        
-        if action == 1:
-            self.res = HttpActionProcessor.process1(self.action)
-        elif action ==2:
-            self.res = HttpActionProcessor.process2(self.action, self.username, self.res)
-        elif action ==3:
-            self.res = HttpActionProcessor.process3(self.action, self.email, self.username, self.passwd)
-        elif action ==4:
-            self.res = HttpActionProcessor.process4(self.action, self.email)
-        elif action ==21:
-            self.res = HttpActionProcessor.process21(self.action, self.access_token, self.key_word, self.begin, self.number)
-        elif action ==22:
-            self.res = HttpActionProcessor.process22(self.action, self.access_token, self.key_word, self.begin, self.number)
-        elif action ==23:
-            self.res = HttpActionProcessor.process23(self.action, self.access_token, self.key_word, self.begin, self.number)
-        elif action ==24:
-            self.res = HttpActionProcessor.process24(self.action, self.access_token, self.key_word, self.begin, self.number)
-        elif action ==19:    
-            self.res = HttpActionProcessor.process19(self.action, self.order, self.begin, self.number)
-        elif action ==20:
-            self.res = HttpActionProcessor.process20(self.action, self.order,  self.begin, self.number)
-        elif action ==5:
-            self.res = HttpActionProcessor.process5(self.action, self.uid)           
-        elif action ==7:        
-            self.res = HttpActionProcessor.process7(self.action, self.uid, self.begin, self.number)
-        elif action ==8: 
-            self.res = HttpActionProcessor.process8(self.action, self.uid)
+        self.res = '0'        
+        if int(self.action) == 1:
+            self.res = HttpActionProcessor_v2.process1(self.action)
+        elif int(self.action) ==2:
+            self.res = HttpActionProcessor_v2.process2(self.action, self.username, self.passwd)
+        elif int(self.action) ==3:
+            self.res = HttpActionProcessor_v2.process3(self.action, self.email, self.username, self.passwd)
+        elif int(self.action) ==4:
+            self.res = HttpActionProcessor_v2.process4(self.action, self.email)
+        elif int(self.action) ==21:
+            self.res = HttpActionProcessor_v2.process21(self.action, self.access_token, self.key_word, self.begin, self.number)
+        elif int(self.action) ==22:
+            self.res = HttpActionProcessor_v2.process22(self.action, self.access_token, self.key_word, self.begin, self.number)
+        elif int(self.action) ==23:
+            self.res = HttpActionProcessor_v2.process23(self.action, self.access_token, self.key_word, self.begin, self.number)
+        elif int(self.action) ==24:
+            self.res = HttpActionProcessor_v2.process24(self.action, self.access_token, self.key_word, self.begin, self.number)
+        elif int(self.action) ==19:    
+            self.res = HttpActionProcessor_v2.process19(self.action, self.order, self.begin, self.number)
+        elif int(self.action) ==20:
+            self.res = HttpActionProcessor_v2.process20(self.action, self.order, self.begin, self.number)
+        elif int(self.action) ==5:
+            self.res = HttpActionProcessor_v2.process5(self.action, self.uid)           
+        elif int(self.action) ==7:        
+            self.res = HttpActionProcessor_v2.process7(self.action, self.uid, self.begin, self.number)
+        elif int(self.action) ==8: 
+            self.res = HttpActionProcessor_v2.process8(self.action, self.uid)
         
 
 if __name__ == '__main__':
